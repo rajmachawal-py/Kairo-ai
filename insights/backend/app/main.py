@@ -2,6 +2,16 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from backend.app.api.routes import (
+    discovery,
+    deepsearch,
+    workspace,
+    projecthub,
+    resources,
+    dashboard,
+    agents,
+)
+
 app = FastAPI(
     title="iNSIGHTS API",
     version="0.1.0",
@@ -16,6 +26,15 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Register routers
+app.include_router(discovery.router, tags=["Discovery"])
+app.include_router(deepsearch.router, tags=["DeepSearch"])
+app.include_router(workspace.router, tags=["Workspace"])
+app.include_router(projecthub.router, tags=["Project HUB"])
+app.include_router(resources.router, tags=["Resources"])
+app.include_router(dashboard.router, tags=["Dashboard"])
+app.include_router(agents.router, tags=["Agents"])
 
 
 @app.get("/health")

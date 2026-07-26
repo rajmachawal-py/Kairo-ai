@@ -7,14 +7,18 @@ class Settings(BaseSettings):
     POSTGRES_USER: str = "insights"
     POSTGRES_PASSWORD: str = "insights"
     POSTGRES_DB: str = "insights"
-    POSTGRES_HOST: str = "postgres"
+    POSTGRES_HOST: str = "localhost"
     POSTGRES_PORT: int = 5432
+
+    # Direct database URL override (takes priority if set)
+    DATABASE_URL: str = ""
 
     # Auth
     SECRET_KEY: str = "change-me-in-production"
 
-    # External APIs
-    OPENAI_API_KEY: str = ""
+    # External APIs (configured per provider in Phase 1)
+    LLM_API_KEY: str = ""
+    LLM_BASE_URL: str = ""
     TAVILY_API_KEY: str = ""
     GITHUB_TOKEN: str = ""
     NEWSAPI_KEY: str = ""
@@ -22,6 +26,8 @@ class Settings(BaseSettings):
 
     @property
     def database_url(self) -> str:
+        if self.DATABASE_URL:
+            return self.DATABASE_URL
         return (
             f"postgresql+asyncpg://{self.POSTGRES_USER}:{self.POSTGRES_PASSWORD}"
             f"@{self.POSTGRES_HOST}:{self.POSTGRES_PORT}/{self.POSTGRES_DB}"
