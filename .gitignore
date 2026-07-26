@@ -1,0 +1,9 @@
+# ── Private / hackathon reference files ──
+iNSIGHTS Track.pdf
+Kairo-WorkFlow.png
+PROJECT_CONTEXT.md
+scaffold.py
+Silence_LogicLoop.pdf
+implementaionPlan.md
+
+# ── The insights/ folder has its own .gitignore ──
