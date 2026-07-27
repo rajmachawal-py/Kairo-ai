@@ -5,5 +5,11 @@ PROJECT_CONTEXT.md
 scaffold.py
 Silence_LogicLoop.pdf
 implementation_plan.md
+project_progress.md
+
+# ── Temp / debug scripts ──
+test_*.py
+list_models.py
+fix_permissions.py
 
 # ── The insights/ folder has its own .gitignore ──

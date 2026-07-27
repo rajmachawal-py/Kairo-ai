@@ -16,7 +16,9 @@ class Settings(BaseSettings):
     # Auth
     SECRET_KEY: str = "change-me-in-production"
 
-    # External APIs (configured per provider in Phase 1)
+    # External APIs
+    GEMINI_API_KEY: str = ""
+    GEMINI_MODEL: str = "gemini-3.6-flash"
     LLM_API_KEY: str = ""
     LLM_BASE_URL: str = ""
     TAVILY_API_KEY: str = ""
